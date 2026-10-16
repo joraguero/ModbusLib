@@ -26,7 +26,7 @@
 #endif
 
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(MB_OS_WINDOWS)
 
 #define MB_DECL_IMPORT __declspec (dllimport)
 #define MB_DECL_EXPORT __declspec (dllexport)
