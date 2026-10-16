@@ -220,6 +220,7 @@ TEST(ModbusTest, createPortRtu)
     ser.flowControl      = Modbus::NoFlowControl;
     ser.timeoutFirstByte = 5000;
     ser.timeoutInterByte = 100;
+    ser.dtrEnable        = false;
 
     ModbusPort *p = createPort(RTU, &ser, false);
     ASSERT_NE(p, nullptr);
@@ -250,6 +251,7 @@ TEST(ModbusTest, createPortAsc)
     ser.flowControl      = Modbus::HardwareControl;
     ser.timeoutFirstByte = 5000;
     ser.timeoutInterByte = 100;
+    ser.dtrEnable        = false;
 
     ModbusPort *p = createPort(ASC, &ser, false);
     ASSERT_NE(p, nullptr);

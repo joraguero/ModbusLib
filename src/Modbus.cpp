@@ -518,6 +518,7 @@ ModbusPort *createPort(ProtocolType type, const void *settings, bool blocking)
         rtu->setFlowControl     (s->flowControl     );
         rtu->setTimeoutFirstByte(s->timeoutFirstByte);
         rtu->setTimeoutInterByte(s->timeoutInterByte);
+        rtu->setDtrEnable       (s->dtrEnable       );
         return rtu;
     }
         break;
@@ -533,6 +534,7 @@ ModbusPort *createPort(ProtocolType type, const void *settings, bool blocking)
         asc->setFlowControl     (s->flowControl     );
         asc->setTimeoutFirstByte(s->timeoutFirstByte);
         asc->setTimeoutInterByte(s->timeoutInterByte);
+        asc->setDtrEnable       (s->dtrEnable       );
         return asc;
     }
         break;

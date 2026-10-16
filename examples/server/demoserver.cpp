@@ -191,6 +191,7 @@ struct Options
         ser.flowControl      = dSer.flowControl          ;
         ser.timeoutFirstByte = dSer.timeoutFirstByte     ;
         ser.timeoutInterByte = dSer.timeoutInterByte     ;
+        ser.dtrEnable        = dSer.dtrEnable            ;
         count                = 16                        ;
     }
 };

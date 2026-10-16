@@ -128,3 +128,18 @@ void ModbusSerialPort::setTimeoutInterByte(uint32_t timeout)
         d->setChanged(true);
     }
 }
+
+bool ModbusSerialPort::dtrEnable() const
+{
+    return d_cast(d_ptr)->dtrEnable();
+}
+
+void ModbusSerialPort::setDtrEnable(bool enable)
+{
+    ModbusSerialPortPrivate *d = d_cast(d_ptr);
+    if (d->dtrEnable() != enable)
+    {
+        d->settings.dtrEnable = enable;
+        d->setChanged(true);
+    }
+}

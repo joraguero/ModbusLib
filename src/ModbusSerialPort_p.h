@@ -23,6 +23,7 @@ public:
         settings.flowControl      = d.flowControl;
         settingsBase.timeout      = d.timeoutFirstByte;
         settings.timeoutInterByte = d.timeoutInterByte;
+        settings.dtrEnable        = d.dtrEnable;
     }
 
 public: // settings
@@ -34,7 +35,8 @@ public: // settings
     inline FlowControl flowControl() const { return settings.flowControl; }
     inline uint32_t timeoutFirstByte() const { return settingsBase.timeout; }
     inline uint32_t timeoutInterByte() const { return settings.timeoutInterByte; }
-    
+    inline bool dtrEnable() const { return settings.dtrEnable; }
+
 public:
     struct
     {
@@ -45,6 +47,7 @@ public:
         StopBits stopBits;
         FlowControl flowControl;
         uint32_t timeoutInterByte;
+        bool dtrEnable;
     } settings;
 };
 

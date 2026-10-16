@@ -22,7 +22,8 @@ SerialDefaults::SerialDefaults() :
     stopBits(OneStop),
     flowControl(NoFlowControl),
     timeoutFirstByte(1000),
-    timeoutInterByte(50)
+    timeoutInterByte(50),
+    dtrEnable(false)
 {
 }
 

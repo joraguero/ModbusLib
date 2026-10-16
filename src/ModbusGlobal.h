@@ -538,6 +538,7 @@ typedef struct
     FlowControl flowControl     ; ///< Value for the serial port's flow control
     uint32_t    timeoutFirstByte; ///< Value for the serial port's timeout waiting first byte of packet
     uint32_t    timeoutInterByte; ///< Value for the serial port's timeout waiting next byte of packet
+    bool        dtrEnable       ; ///< Value for the serial port's DTR line: `true` asserts DTR while port is open
 } SerialSettings;
 
 /// \brief Struct to define settings for TCP/UDP connection

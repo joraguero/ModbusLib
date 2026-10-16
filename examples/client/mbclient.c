@@ -59,6 +59,7 @@ void initOptions()
     options.ser.flowControl      = NoFlowControl;
     options.ser.timeoutFirstByte = 3000;
     options.ser.timeoutInterByte = 5;
+    options.ser.dtrEnable        = false;
     options.func                 = MBF_READ_HOLDING_REGISTERS;
     options.offset               = 0;
     options.count                = 16;

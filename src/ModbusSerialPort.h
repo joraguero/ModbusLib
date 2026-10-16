@@ -120,6 +120,12 @@ public: // settings
     /// \details Set current serial port timeout of waiting next byte (inter byte waiting tgimeout) of incomming packet (in milliseconds).
     void setTimeoutInterByte(uint32_t timeout);
 
+    /// \details Returns `true` if the serial port's DTR line is asserted while the port is open, `false` otherwise.
+    bool dtrEnable() const;
+
+    /// \details Set whether the serial port's DTR line is asserted while the port is open.
+    void setDtrEnable(bool enable);
+
 public:
     Modbus::StatusCode write() override;
     Modbus::StatusCode read() override;

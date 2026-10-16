@@ -60,6 +60,7 @@ void initOptions()
     options.ser.flowControl      = NoFlowControl;
     options.ser.timeoutFirstByte = 3000;
     options.ser.timeoutInterByte = 5;
+    options.ser.dtrEnable        = false;
     options.c0                   = 256;
     options.c1                   = 256;
     options.c3                   = 256;

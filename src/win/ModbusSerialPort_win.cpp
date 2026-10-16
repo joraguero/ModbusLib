@@ -77,7 +77,9 @@ StatusCode ModbusSerialPort::open()
             dcb.fNull = FALSE;
             dcb.fErrorChar = FALSE;
 
-            if (dcb.fDtrControl == DTR_CONTROL_HANDSHAKE)
+            if (d->dtrEnable())
+                dcb.fDtrControl = DTR_CONTROL_ENABLE;
+            else if (dcb.fDtrControl == DTR_CONTROL_HANDSHAKE)
                 dcb.fDtrControl = DTR_CONTROL_DISABLE;
 
             if (dcb.fRtsControl != RTS_CONTROL_HANDSHAKE)

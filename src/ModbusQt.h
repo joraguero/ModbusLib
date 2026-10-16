@@ -40,6 +40,7 @@ public:
     const QString flowControl       ; ///< Setting key for the serial port's flow control
     const QString timeoutFirstByte  ; ///< Setting key for the serial port's timeout waiting first byte of packet
     const QString timeoutInterByte  ; ///< Setting key for the serial port's timeout waiting next byte of packet
+    const QString dtrEnable         ; ///< Setting key for the serial port's DTR line
     const QString isBroadcastEnabled; ///< Setting key for the serial port enables broadcast mode for `0` unit address
 
     const QString NoParity          ; ///< String constant for repr of `NoParity` enum value
@@ -84,6 +85,7 @@ public:
     const FlowControl  flowControl       ; ///< Default value for the serial port's flow control
     const uint32_t     timeoutFirstByte  ; ///< Default value for the serial port's timeout waiting first byte of packet
     const uint32_t     timeoutInterByte  ; ///< Default value for the serial port's timeout waiting next byte of packet
+    const bool         dtrEnable         ; ///< Default value for the serial port's DTR line
     const bool         isBroadcastEnabled; ///< Default value for the serial port enables broadcast mode for `0` unit address
 
     /// \details Constructor ot the class.
@@ -157,6 +159,10 @@ MODBUS_EXPORT uint32_t getSettingTimeoutFirstByte(const Settings &s, bool *ok = 
 /// If value can't be retrieved that default value is returned and *ok = false (if provided).
 MODBUS_EXPORT uint32_t getSettingTimeoutInterByte(const Settings &s, bool *ok = nullptr);
 
+/// \details Get settings value for the serial port's DTR line.
+/// If value can't be retrieved that default value is returned and *ok = false (if provided).
+MODBUS_EXPORT bool getSettingDtrEnable(const Settings &s, bool *ok = nullptr);
+
 /// \details Get settings value for the serial port enables broadcast mode for `0` unit address.
 /// If value can't be retrieved that default value is returned and *ok = false (if provided).
 MODBUS_EXPORT bool getSettingBroadcastEnabled(const Settings &s, bool *ok = nullptr);
@@ -208,6 +214,9 @@ MODBUS_EXPORT void setSettingTimeoutFirstByte(Settings &s, uint32_t v);
 
 /// \details Set settings value for the serial port's timeout waiting next byte of packet.
 MODBUS_EXPORT void setSettingTimeoutInterByte(Settings &s, uint32_t v);
+
+/// \details Set settings value for the serial port's DTR line.
+MODBUS_EXPORT void setSettingDtrEnable(Settings &s, bool v);
 
 /// \details Set settings value for the serial port enables broadcast mode for `0` unit address.
 MODBUS_EXPORT void setSettingBroadcastEnabled(Settings &s, bool v);

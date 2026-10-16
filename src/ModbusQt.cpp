@@ -24,6 +24,7 @@ Strings::Strings() :
     flowControl       (QStringLiteral("flowControl")),
     timeoutFirstByte  (QStringLiteral("timeoutFirstByte")),
     timeoutInterByte  (QStringLiteral("timeoutInterByte")),
+    dtrEnable         (QStringLiteral("dtrEnable")),
     isBroadcastEnabled(QStringLiteral("isBroadcastEnabled")),
 
     NoParity          (sparity(Modbus::NoParity   )),
@@ -65,6 +66,7 @@ Defaults::Defaults() :
     flowControl       (Modbus::SerialDefaults::instance().flowControl     ),
     timeoutFirstByte  (Modbus::SerialDefaults::instance().timeoutFirstByte),
     timeoutInterByte  (Modbus::SerialDefaults::instance().timeoutInterByte),
+    dtrEnable         (Modbus::SerialDefaults::instance().dtrEnable       ),
     isBroadcastEnabled(true)
 {
 }
@@ -171,6 +173,11 @@ uint32_t getSettingTimeoutInterByte(const Settings &s, bool *ok)
     MB_GET_SETTING_MACRO(uint32_t, timeoutInterByte, v = static_cast<uint32_t>(var.toUInt(&okInner)))
 }
 
+bool getSettingDtrEnable(const Settings &s, bool *ok)
+{
+    MB_GET_SETTING_MACRO(bool, dtrEnable, v = var.toBool(); okInner = true)
+}
+
 bool getSettingBroadcastEnabled(const Settings &s, bool *ok)
 {
     MB_GET_SETTING_MACRO(bool, isBroadcastEnabled, v = var.toBool(); okInner = true)
@@ -254,6 +261,11 @@ void setSettingTimeoutFirstByte(Settings &s, uint32_t v)
 void setSettingTimeoutInterByte(Settings &s, uint32_t v)
 {
     s[Modbus::Strings::instance().timeoutInterByte] = v;
+}
+
+void setSettingDtrEnable(Settings &s, bool v)
+{
+    s[Modbus::Strings::instance().dtrEnable] = v;
 }
 
 void setSettingBroadcastEnabled(Settings &s, bool v)
@@ -509,6 +521,7 @@ ModbusPort *createPort(const Settings &settings, bool blocking)
                 sl.flowControl = toFlowControl(settings.value(s.flowControl));
                 sl.timeoutFirstByte = settings.value(s.timeoutFirstByte, d.timeoutFirstByte).toUInt();
                 sl.timeoutInterByte = settings.value(s.timeoutInterByte, d.timeoutInterByte).toUInt();
+                sl.dtrEnable = settings.value(s.dtrEnable, d.dtrEnable).toBool();
                 return Modbus::createPort(type, &sl, blocking);
             }
                 break;

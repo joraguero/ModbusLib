@@ -429,6 +429,7 @@ struct MODBUS_EXPORT SerialDefaults
     const Modbus::FlowControl flowControl     ; ///< Default value for the serial port's flow control
     const uint32_t            timeoutFirstByte; ///< Default value for the serial port's timeout waiting first byte of packet
     const uint32_t            timeoutInterByte; ///< Default value for the serial port's timeout waiting next byte of packet
+    const bool                dtrEnable       ; ///< Default value for the serial port's DTR line
 
     /// \details Constructor ot the class.
     SerialDefaults();
