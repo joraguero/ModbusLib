@@ -721,7 +721,8 @@ public:
         Notation_Default    , ///< Default notation which is equal to Modbus notation
         Notation_Modbus     , ///< Standard Modbus address notation like `000001`, `100001`, `300001`, `400001`
         Notation_IEC61131   , ///< IEC-61131 address notation like `%%Q0`, `%%I0`, `%%IW0`, `%%MW0`
-        Notation_IEC61131Hex  ///< IEC-61131 Hex address notation like `%%Q0000h`, `%%I0000h`, `%%IW0000h`, `%%MW0000h`
+        Notation_IEC61131Hex, ///< IEC-61131 Hex address notation like `%%Q0000h`, `%%I0000h`, `%%IW0000h`, `%%MW0000h`
+        Notation_Modbus0      ///< Modbus address notation 0-based: offset only, like `0`, `100` for `400001`, `400101`
     };
 
 public:
@@ -904,6 +905,8 @@ public:
                 }
             }
                 break;
+            case Notation_Modbus0:
+                return toDecString<StringT>(offset());
             default:
                 return toDecString<StringT>(toInt(), 6);
             }

@@ -92,4 +92,8 @@ TEST(ModbusAddressTest, AddressToString)
     EXPECT_EQ(bmAdr1xStandard.toString<std::string>(Modbus::Address::Notation_IEC61131Hex), expected1xIEC61131Hex);
     EXPECT_EQ(bmAdr3xStandard.toString<std::string>(Modbus::Address::Notation_IEC61131Hex), expected3xIEC61131Hex);
     EXPECT_EQ(bmAdr4xStandard.toString<std::string>(Modbus::Address::Notation_IEC61131Hex), expected4xIEC61131Hex);
+
+    EXPECT_EQ(bmAdr0xStandard.toString<std::string>(Modbus::Address::Notation_Modbus0), std::string("0"));
+    EXPECT_EQ(bmAdr4xStandard.toString<std::string>(Modbus::Address::Notation_Modbus0), std::string("0"));
+    EXPECT_EQ(Modbus::Address(400101).toString<std::string>(Modbus::Address::Notation_Modbus0), std::string("100"));
 }
